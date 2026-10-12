@@ -122,22 +122,27 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public Object get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
-        }
-        Node2P currentNode;
-        if (index < size / 2) {
-            currentNode = head;
-            for (int i = 0; i < index; i++) {
-                currentNode = currentNode.next;
+        try {
+            if (index < 0 || index >= size) {
+                throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
             }
-        } else {
-            currentNode = tail;
-            for (int i = size - 1; i > index; i--) {
-                currentNode = currentNode.prev;
+            Node2P currentNode;
+            if (index < size / 2) {
+                currentNode = head;
+                for (int i = 0; i < index; i++) {
+                    currentNode = currentNode.next;
+                }
+            } else {
+                currentNode = tail;
+                for (int i = size - 1; i > index; i--) {
+                    currentNode = currentNode.prev;
+                }
             }
+            return currentNode.data;
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error: " + e.getMessage());
+            return null;
         }
-        return currentNode.data;
     }
 
     @Override
