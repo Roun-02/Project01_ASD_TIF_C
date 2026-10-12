@@ -2,22 +2,15 @@
  * testSinglyLinkedList
  */
 public class testSinglyLinkedList {
-
     public static void main(String[] args) {
         SinglyLinkedList linkedList = new SinglyLinkedList();
-        // linkedList.addFirst(1);
-        // linkedList.addFirst(2);
-        // linkedList.addFirst(3);
-        // linkedList.addFirst(4);
-        // linkedList.addFirst(5);
-        // linkedList.addFirst(6);
+        linkedList.addFirst(1);
+        linkedList.addFirst(2);
+        linkedList.addFirst(3);
+        linkedList.addFirst(4);
+        linkedList.addFirst(5);
+        linkedList.addFirst(6);
 
-        linkedList.addLast(1);
-        linkedList.addLast(2);
-        linkedList.addLast(3);
-        linkedList.addLast(4);  
-        linkedList.addLast(5);
-        linkedList.addLast(6);
         System.out.println(linkedList.get(2)); // menghasilkan nilai 3
         System.out.println(linkedList.get(12)); //Terjadi exception error
         System.out.println(linkedList.indexOf(4));// menghasilkan 5
