@@ -122,12 +122,27 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public Object get(int index) {
-        // TODO digunakan untuk mengembalikan data pada index ke-i dimulai dari head. Head memiliki index 0
-        return null;
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        }
+        Node2P currentNode;
+        if (index < size / 2) {
+            currentNode = head;
+            for (int i = 0; i < index; i++) {
+                currentNode = currentNode.next;
+            }
+        } else {
+            currentNode = tail;
+            for (int i = size - 1; i > index; i--) {
+                currentNode = currentNode.prev;
+            }
+        }
+        return currentNode.data;
     }
+
     @Override
     public int indexOf(Object targetData) {
-        // TODO digunakan mencari kemunculan pertama targetData pada linked list dan mengembalikan indeksnya. Indeks dari head adalah 0. Jika tidak ada targetData pada linked list, kembalikan nilai -1 
+        // TODO digunakan mencari kemunculan pertama targetData pada linked list dan mengembalikan indeksnya. Indeks dari head adalah 0. Jika tidak ada targetData pada linked list, kembalikan nilai -1
         return 0;
     }
     @Override
