@@ -165,9 +165,25 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public boolean remove(Object targetData) {
-        // TODO digunakan untuk mencari dan menghapus node dengan data=targetData pada linked list serta mengembalikan nilai True jika berhasil, dan False jika targetData tidak ada di linkedList
-        return false;
+        Node2P currentNode = head;
+        while (currentNode != null && !currentNode.data.equals(targetData)) {
+            currentNode = currentNode.next;
+        }
+        if (currentNode == null) {
+            return false;
+        }
+        if (currentNode == head) {
+            deleteFirst();
+        } else if (currentNode == tail) {
+            deleteLast();
+        } else {
+            currentNode.prev.next = currentNode.next;
+            currentNode.next.prev = currentNode.prev;
+            size--;
+        }
+        return true;
     }
+
     @Override
     public Object[] toArray() {
         Object[] arrObjects = new Object[size];
