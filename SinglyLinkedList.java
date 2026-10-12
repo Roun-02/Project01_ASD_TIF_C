@@ -105,21 +105,27 @@ public class SinglyLinkedList implements LinkedList {
     public void print() {
         Node currentNode = head;
         for (int i = 0; i < size; i++) {
-            System.out.println(currentNode.data);
+            System.out.print(currentNode.data + ", ");
             currentNode = currentNode.pointer;
         }
+        System.out.println();
     }
 
     @Override
     public Object get(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
+        try {
+            if (index < 0 || index >= size) {
+                throw new IndexOutOfBoundsException("Index tidak valid! Index yang diminta: " + index + ", sedangkan jumlah data: " + size + ". Index yang valid adalah 0 sampai " + (size - 1) + ".");
+            }
+            Node currentNode = head;
+            for (int i = 0; i < index; i++) {
+                currentNode = currentNode.pointer;
+            }
+            return currentNode.data;
+
+        } catch (IndexOutOfBoundsException e) {
+            return "Error: " + e.getMessage();
         }
-        Node CurrentNode = head;
-        for (int i = 0; i < index; i++) {
-            CurrentNode = CurrentNode.pointer;
-        }
-        return CurrentNode.data;
     }
 
     @Override
@@ -142,8 +148,9 @@ public class SinglyLinkedList implements LinkedList {
     public void printReverse() {
         Object[] save = toArray();
         for (int i = size - 1; i >= 0; i--) {
-            System.out.println(save[i]);
+            System.out.print(save[i] + ", ");
         }
+        System.out.println();
     }
 
     @Override
@@ -159,15 +166,15 @@ public class SinglyLinkedList implements LinkedList {
         Node temp = head;
         while (temp.pointer != null) {
             if (temp.pointer.data.equals(targetData)) {
-                if (temp.pointer == tail) 
+                if (temp.pointer == tail)
                     tail = temp;
-                temp.pointer = temp.pointer.pointer; 
+                temp.pointer = temp.pointer.pointer;
                 size--;
-                return true; 
+                return true;
             }
             temp = temp.pointer;
         }
-        return false; 
+        return false;
     }
 
     @Override
