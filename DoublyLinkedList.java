@@ -115,9 +115,10 @@ public class DoublyLinkedList implements LinkedList{
     public void print(){
         Node2P currentNode = head;
         for(int i =0;i<size;i++){
-            System.out.println(currentNode.data);
+            System.out.print(currentNode.data + ", ");
             currentNode = currentNode.next;
         }
+        System.out.println();
     }
 
     @Override
@@ -140,8 +141,7 @@ public class DoublyLinkedList implements LinkedList{
             }
             return currentNode.data;
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Error: " + e.getMessage());
-            return null;
+            return "Error: " + e.getMessage();
         }
     }
 
@@ -161,11 +161,12 @@ public class DoublyLinkedList implements LinkedList{
 
     @Override
     public void printReverse() {
-       Node2P currentNode = tail;
-       while (currentNode != null) {
-           System.out.println(currentNode.data);
-           currentNode = currentNode.prev;
-       }
+        Node2P currentNode = tail;
+        while (currentNode != null) {
+            System.out.print(currentNode.data + ", ");
+            currentNode = currentNode.prev;
+        }
+        System.out.println();
     }
 
     @Override
